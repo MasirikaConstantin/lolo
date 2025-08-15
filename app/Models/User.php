@@ -21,7 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-    ];
+        'created_by',
+        'updated_by'
+        ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,5 +46,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->ref = \Illuminate\Support\Str::uuid();
+        });
     }
 }

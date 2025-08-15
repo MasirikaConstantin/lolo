@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('fichier');
             $table->date('date_emission');
             $table->date('date_expiration')->nullable();
+            $table->uuid("ref")->unique();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->timestamps();
         });
     }

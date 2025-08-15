@@ -20,6 +20,9 @@ return new class extends Migration
             $table->date('date_fin')->nullable();
             $table->foreignId('responsable_id')->nullable()->constrained('fonctionnaires');
             $table->text('commentaires')->nullable();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->uuid("ref")->unique();
             $table->timestamps();
         });
     }

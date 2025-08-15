@@ -26,6 +26,9 @@ return new class extends Migration
             $table->string('nom_mere');
             $table->string('numero_identification_national')->unique()->nullable();
             $table->string('photo')->nullable();
+            $table->uuid("ref")->unique();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->timestamps();
         });
     }

@@ -22,6 +22,9 @@ return new class extends Migration
             $table->boolean('livre')->default(false);
             $table->date('date_livraison')->nullable();
             $table->foreignId('livre_par')->nullable()->constrained('fonctionnaires');
+            $table->uuid("ref")->unique();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->timestamps();
         });
     }

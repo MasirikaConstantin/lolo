@@ -24,6 +24,9 @@ return new class extends Migration
             $table->text('temoins_femme')->nullable();
             $table->string('statut')->default('en_attente'); // en_attente, approuvé, rejeté, célébré
             $table->text('notes')->nullable();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->uuid("ref")->unique();
             $table->timestamps();
         });
     }

@@ -41,3 +41,22 @@ export interface User {
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
 }
+
+export interface User {
+    id: number;
+    ref: string;
+    name: string;
+    email: string;
+    role: 'admin' | 'user';
+    is_active: boolean;
+    created_at: string;
+}
+
+export interface UserFormData {
+    name: string;
+    email: string;
+    password: string;
+    password_confirmation: string;
+    role: 'admin' | 'user';
+    is_active: boolean;
+}

@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('statut')->default('payé'); // payé, impayé, remboursé
             $table->foreignId('encaisser_par')->constrained('fonctionnaires');
             $table->text('notes')->nullable();
+            $table->uuid("ref")->unique();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
             $table->timestamps();
         });
     }
