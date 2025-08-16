@@ -8,7 +8,6 @@ import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { Link } from '@inertiajs/react';
 import { PencilIcon, ArrowLeftIcon } from 'lucide-react';
-import AttachPieceJointe from '../PieceJointes/AttachPieceJointe';
 
 interface MariageShowProps {
     mariage: Mariage;
@@ -206,38 +205,7 @@ export default function MariageShow({ mariage }: MariageShowProps) {
                 <div className="mt-6">
                 <h2 className="text-xl font-semibold mb-4">Pièces jointes</h2>
                 
-                <AttachPieceJointe 
-                    attachableType="Mariage" 
-                    attachableId={mariage.id.toString()} 
-                    typesPieces={['CNI', 'Acte de naissance', 'Passeport', 'Permis de conduire', 'Autre']}
-                />
-
-                <div className="mt-4 space-y-4">
-                    {mariage.piece_jointes.map((piece) => (
-                        <div key={piece.id} className="border rounded-lg p-4">
-                            <div className="flex items-center justify-between">
-                                <div>
-                                    <h3 className="font-medium">{piece.type_piece}</h3>
-                                    <p className="text-sm text-muted-foreground">{piece.numero_piece}</p>
-                                </div>
-                                <a 
-                                    href={piece.file_url} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="text-primary hover:underline"
-                                >
-                                    Voir le fichier
-                                </a>
-                            </div>
-                            <div className="mt-2 flex items-center gap-4 text-sm">
-                                <span>Émis le: {format(new Date(piece.date_emission), 'PPP', { locale: fr })}</span>
-                                {piece.date_expiration && (
-                                    <span>Expire le: {format(new Date(piece.date_expiration), 'PPP', { locale: fr })}</span>
-                                )}
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                
             </div>
             </div>
         </AppLayout>
