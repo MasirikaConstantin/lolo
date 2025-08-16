@@ -19,29 +19,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-//User::factory(10)->create();
+User::factory(10)->create();
 
-//Citoyen::factory()->count(100)->create();
+Citoyen::factory()->count(100)->create();
 
-//Fonctionnaire::factory()->count(5)->create();
+Fonctionnaire::factory()->count(5)->create();
 
-//Fonctionnaire::factory()->create([
-    //'fonction' => 'Maire',
-  //  'grade' => 'A'
-//]);
+Fonctionnaire::factory()->create([
+    'fonction' => 'Maire',
+    'grade' => 'A'
+]);
 
     // Create 5 mariages with all related documents
-//Mariage::factory()->count(5)->has(DocumentMariage::factory()->count(3), 'documents')->create();
+Mariage::factory()->count(5)->has(DocumentMariage::factory()->count(3), 'documents')->create();
 
 // Create a mariage with specific attributes
-/*Mariage::factory()->create([
+Mariage::factory()->create([
 'statut' => 'célébré',
 'regime_matrimonial' => 'Communauté réduite'
-]);*/
+]);
 
 // Create documents for an existing mariage
-//$mariage = Mariage::all()->random();
-//DocumentMariage::factory()->count(2)->for($mariage)->create();
+$mariage = Mariage::all()->random();
+DocumentMariage::factory()->count(2)->for($mariage)->create();
 // Create 3 paiements for a specific mariage
 $mariage = Mariage::where('statut', 'approuvé')->inRandomOrder()->get()->random();
 Paiement::factory()
