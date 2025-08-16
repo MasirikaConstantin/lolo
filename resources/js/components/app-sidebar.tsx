@@ -34,17 +34,13 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Document Mariages',
-        href: '/document-mariages',
+        href: '/documents-mariage',
         icon: DockIcon,
     },
-    {
-        title: 'Piece Jointes',
-        href: '/piece-jointes',
-        icon: Link2,
-    },
+   
     {
         title: 'Etapes Mariages',
-        href: '/etape-mariages',
+        href: '/etapes-mariage',
         icon: StepBackIcon,
     },
     {

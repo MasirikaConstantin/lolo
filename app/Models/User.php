@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Fonctionnaire;
 
 class User extends Authenticatable
 {
@@ -47,6 +48,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
     protected static function boot()
     {
         parent::boot();
@@ -54,5 +56,14 @@ class User extends Authenticatable
         static::creating(function ($model) {
             $model->ref = \Illuminate\Support\Str::uuid();
         });
+    }
+    public function fonctionnaire()
+    {
+        return $this->hasOne(Fonctionnaire::class);
+    }
+    protected $appends = ['nomcomplet'];
+    public function getNomcompletAttribute()
+    {
+        return $this->nom . ' ' . $this->postnom . ' ' . $this->prenom;
     }
 }
